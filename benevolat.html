@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" name="theme-color" content="bg-dark">
+    <title>Bénévolat</title>
+    <!-- Import de bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Import de la feuille de style CSS -->
+    <link rel="stylesheet" href="benevolat.css">
+    <!-- Import des polices Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;600&family=Raleway:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Import du logo dans l'onglet -->
+    <link rel="icon" type="image/x-icon" href="../logo/asso-logo.png">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-dark fixed-top navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../page_d'acceuil/acceuil.html">
+            <img src="../logo/asso-logo.png" class="logo" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../page_d'acceuil/acceuil.html">Accueil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../page_spiritualité/spiritualité.html">Spiritualité</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Action social </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="../page_jeunesse/jeunes.html">Jeunesse</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Handicap</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Action a proximité</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="https://www.armeedusalut.fr/nous-soutenir/">Faire un don</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input id="searchInput" class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search" />
+              <button class="btn btn-outline-light" type="submit">Rechercher</button>
+            </form>
+          </div>
+        </div>
+        <script>
+          document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche le rechargement
+            // Récupère le texte entré
+            const query = document.querySelector('input[type="search"]').value.trim().toLowerCase();
+            // Dictionnaire des pages
+            const pages = {
+              "accueil": "../page_d'acceuil/acceuil.html",
+              "bénévolat": "../page_benevolat/benevolat.html",
+              "témoignages": "../page_des_temoignages/temoignages.html",
+              "actualités": "../page_d'actualites/actualités.html",
+              "spiritualité": "../page_spiritualité/spiritualité.html"
+            };
+            // Fonction pour calculer la distance de Levenshtein (mesure la "proximité" entre deux mots)
+            function levenshtein(a, b) {
+              const matrix = Array(a.length + 1).fill(null).map(() => Array(b.length + 1).fill(null));
+              for (let i = 0; i <= a.length; i++) matrix[i][0] = i;
+              for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+              for (let i = 1; i <= a.length; i++) {
+                for (let j = 1; j <= b.length; j++) {
+                  const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+                  matrix[i][j] = Math.min(matrix[i - 1][j] + 1, // suppression
+                    matrix[i][j - 1] + 1, // insertion
+                    matrix[i - 1][j - 1] + cost // substitution
+                  );
+                }
+              }
+              return matrix[a.length][b.length];
+            }
+            // Recherche de la page la plus proche
+            let bestMatch = null;
+            let minDistance = Infinity;
+            for (const [key, url] of Object.entries(pages)) {
+              const distance = levenshtein(query, key);
+              if (distance < minDistance) {
+                minDistance = distance;
+                bestMatch = url;
+              }
+            }
+            // Si la distance est raisonnable (tolérance d’erreur)
+            if (minDistance <= 3) { // <= 3 permet de tolérer 2-3 fautes max
+              window.location.href = bestMatch;
+            } else {
+              alert("Page non trouvée !");
+            }
+          });
+        </script>
+      </nav>
+    </header>
+    
+    <section class="hero">
+      <div class="container">
+        <h1>Devenir bénévole</h1>
+        <p>Vous souhaitez partager votre expérience, vous engager, agir pour votre communauté ? Rejoignez les bénévoles de l'Armée du Salut.</p>
+        <br>
+        <a href="#missions" class="btn btn-danger">Découvrir les missions</a>
+      </div>
+    </section>
+    <main class="benevolat-section">
+      <section id="missions" class="missions">
+        <div class="container">
+          <h2>Nos missions</h2>
+          <br>
+          <div class="row">
+            <div class="card ">
+              <div class="card-body">
+                <h3>Aide alimentaire</h3>
+                <p>Participer à la distribution des repas, aux épiceries sociales, aux maraudes…</p>
+              </div>
+            </div>
+            <div class="card ">
+              <div class="card-body">
+                <h3>Soutien scolaire & alphabétisation</h3>
+                <p>Accompagner les enfants ou adultes pour progresser en français ou dans les études.</p>
+              </div>
+            </div>
+            <div class="card ">
+              <div class="card-body">
+                <h3>Accompagnement des personnes âgées</h3>
+                <p>Visites, lien social, aide au quotidien dans les établissements ou à domicile.</p>
+              </div>
+            </div>
+            <div class="card ">
+              <div class="card-body">
+                <h3>Animations culturelles & sportives</h3>
+                <p>Organiser ou participer à des ateliers, sorties, événements de proximité.</p>
+              </div>
+            </div>
+            <div class="card ">
+              <div class="card-body">
+                <h3>Animations culturelles & sportives</h3>
+                <p>Organiser ou participer à des ateliers, sorties, événements de proximité.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h3>Animations culturelles & sportives</h3>
+                <p>Organiser ou participer à des ateliers, sorties, événements de proximité.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="text-center mb-5">
+          <a href="https://pab.armeedusalut.fr" class="btn btn-danger">Je deviens bénévole</a>
+        </div>
+      </section>
+      <section class="pourquoi">
+        <div class="container">
+          <h2>Pourquoi faire du bénévolat ?</h2>
+          <p>Être bénévole, c'est développer des compétences, tisser des liens, donner du sens à son temps. C’est aussi participer à une action concrète qui fait la différence au quotidien.</p>
+          <ul>
+            <li>Engagement citoyen.  </li>
+            <li>Soutien social humain</li>
+            <li>Expérience valorisante</li>
+          </ul>
+        </div>
+      </section>
+      <section class="contact-benevolat">
+        <div class="container">
+          <h2>Contactez le service bénévolat</h2>
+          <p>Pour toute question ou pour rejoindre les bénévoles, contactez-nous :</p>
+          <p>
+            <strong>Téléphone :</strong> 01 43 62 25 42
+          </p>
+          <p>
+            <strong>Email :</strong> benevolat@armeedusalut.fr
+          </p>
+          <a href="#" class="btn btn-danger">Je propose mon aide</a>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Armée du Salut — Tous droits réservés</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/people/Fondation-de-lArm%25C3%25A9e-du-Salut-France/100064903023958/">
+            <img src="../logo/facebook-logo.png" alt="Facebook">
+          </a>
+          <a href="https://www.linkedin.com/company/arm%C3%A9e-du-salut-france">
+            <img src="../logo/linkedIn-logo.png" alt="LinkedIn">
+          </a>
+          <a href="https://www.instagram.com/armeedusalut/">
+            <img src="../logo/instagram-logo.png" alt="Instagram">
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
