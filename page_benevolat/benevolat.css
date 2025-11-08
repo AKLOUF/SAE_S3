@@ -1,0 +1,212 @@
+/* Police & body */
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #011930; 
+}
+
+.dropdown-menu {
+  background-color: #011930 !important; 
+}
+
+.dropdown-item {
+  color: #fff !important; 
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #0b2035!important; 
+  color: #fff !important;
+}
+
+.logo {
+  height: 40px;   
+  width: auto;   
+  object-fit: contain; 
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(100deg, #b92b27, #ffc0c0);
+  color: white;
+  text-align: center;
+  padding: 100px 20px 60px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Missions */
+.missions {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.missions h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+
+
+.missions .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.missions .card {
+  flex: calc(33.333% - 20px);
+  max-width: calc(33.333% - 20px);
+  margin: 0;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  color: #b92b27;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Pourquoi devenir bénévole ? */
+.pourquoi {
+  background-color: #ffd8d8;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.pourquoi h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.pourquoi p, .pourquoi ul {
+  font-size: 1.1rem;
+}
+
+.pourquoi ul {
+  margin: 20px auto;
+  list-style-position: outside;
+  text-align: left;
+  display: inline-block;
+}
+
+/* Contact */
+.contact-benevolat {
+  padding: 60px 0;
+  text-align: center;
+  list-style-position: inside;
+}
+
+.contact-benevolat h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.contact-benevolat p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+  background-color: #011930;
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.footer .socials img {
+  width: 24px;
+  margin: 0 10px;
+  transition: opacity 0.3s;
+}
+
+.footer .socials img:hover {
+  opacity: 0.7;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.footer .socials a {
+  display: inline-block;
+  margin: 0 2px; 
+}
+
+.footer .socials {
+  font-size: 0; 
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .card h3 {
+    font-size: 1.3rem;
+  }
+  .navbar nav {
+    display: none; 
+  }
+}
+
+@media (max-width: 768px) {
+  .missions .card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .missions .card {
+    flex: calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
