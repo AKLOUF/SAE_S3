@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="auto">
+<head>
+    <meta charset="utf-8">
+    <title>Action à Proximité - Armée du Salut</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="action_proximite.css">
+    <link rel="icon" type="image/x-icon" href="../logo/asso-logo.png">
+
+    <!-- Polices -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <nav class="navbar navbar-dark navbar-custom fixed-top navbar-expand-lg">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="../page_d'acceuil/acceuil.html">
+                <img src="../logo/asso-logo.png" class="logo" alt="">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="../page_d'acceuil/acceuil.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../page_spiritualité/spiritualité.html">Spiritualité</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Action sociale</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../page_jeunesse/jeunes.html">Jeunesse</a></li>
+                            <li><a class="dropdown-item" href="../page_handicap/handicap.html">Handicap</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="action_proximite.html">Action à proximité</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="https://www.armeedusalut.fr/nous-soutenir/">Faire un don</a></li>
+                </ul>
+
+                <!-- BARRE DE RECHERCHE -->
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" id="searchInput" list="suggestions" type="search" placeholder="Rechercher">
+                    <datalist id="suggestions"></datalist>
+                    <button class="btn btn-outline-light" type="submit">Rechercher</button>
+                </form>
+
+                <script>
+                    const searchInput = document.getElementById("searchInput");
+                    const suggestions = document.getElementById("suggestions");
+
+                    const pages = {
+                        "accueil": "../page_d'acceuil/acceuil.html",
+                        "spiritualité": "../page_spiritualité/spiritualité.html",
+                        "jeunesse": "../page_jeunesse/jeunes.html",
+                        "handicap": "../page_handicap/handicap.html",
+                        "action à proximité": "action_proximite.html",
+                        "actualités": "../page_d'actualites/actualités.html",
+                        "bénévolat": "../page_benevolat/benevolat.html",
+                        "témoignages": "../page_des_temoignages/temoignages.html"
+                    };
+
+                    searchInput.addEventListener("input", () => {
+                        const query = searchInput.value.toLowerCase();
+                        suggestions.innerHTML = "";
+                        if (query.length > 0) {
+                            Object.keys(pages).forEach(key => {
+                                if (key.startsWith(query)) {
+                                    const option = document.createElement("option");
+                                    option.value = key;
+                                    suggestions.appendChild(option);
+                                }
+                            });
+                        }
+                    });
+
+                    document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
+                        event.preventDefault();
+                        const value = searchInput.value.toLowerCase();
+                        if (pages[value]) window.location.href = pages[value];
+                        else alert("Page non trouvée !");
+                    });
+                </script>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+    <!-- CARROUSEL -->
+    <div id="carouselAction" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="action-carrousel.jpg" class="d-block w-100 carousel-img" alt="">
+                <div class="carousel-caption d-flex align-items-center justify-content-center carousel-title-box">
+                    <h1 class="carousel-main-title">Agir près de chez vous</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- NOS ACTIONS PAR RÉGION -->
+    <section class="container my-5 py-5">
+        <h2 class="section-title text-center mb-5">Nos actions par région</h2>
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm region-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Île-de-France</h5>
+                        <p class="card-text"><strong>Présent :</strong> Crèches, centres sociaux, accompagnement éducatif et social.</p>
+                        <a href="https://fr.wikipedia.org/wiki/%C3%8Ele-de-France" target="_blank" class="btn btn-link-red">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm region-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Hauts-de-France</h5>
+                        <p class="card-text"><strong>Présent :</strong> Maisons de jeunes, soutien scolaire et actions sociales locales.</p>
+                        <a href="https://fr.wikipedia.org/wiki/Hauts-de-France" target="_blank" class="btn btn-link-red">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm region-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Grand Est</h5>
+                        <p class="card-text"><strong>Présent :</strong> Accompagnement social, activités culturelles et camps jeunesse.</p>
+                        <a href="https://fr.wikipedia.org/wiki/Grand_Est" target="_blank" class="btn btn-link-red">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm region-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Normandie</h5>
+                        <p class="card-text"><strong>Présent :</strong> Centres sociaux, actions culturelles et soutien communautaire.</p>
+                        <a href="https://fr.wikipedia.org/wiki/Normandie" target="_blank" class="btn btn-link-red">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm region-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bretagne</h5>
+                        <p class="card-text"><strong>Présent :</strong> Accueil social, accompagnement éducatif et activités locales.</p>
+                        <a href="https://fr.wikipedia.org/wiki/Bretagne" target="_blank" class="btn btn-link-red">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm region-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Pays de la Loire</h5>
+                        <p class="card-text"><strong>Présent :</strong> Crèches, soutien scolaire et actions sociales locales.</p>
+                        <a href="https://fr.wikipedia.org/wiki/Pays_de_la_Loire" target="_blank" class="btn btn-link-red">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm region-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Centre-Val de Loire</h5>
+                        <p class="card-text"><strong>Présent :</strong> Centres sociaux, accompagnement éducatif et activités locales.</p>
+                        <a href="https://fr.wikipedia.org/wiki/Centre-Val_de_Loire" target="_blank" class="btn btn-link-red">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm region-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bourgogne-Franche-Comté</h5>
+                        <p class="card-text"><strong>Présent :</strong> Accompagnement social, activités culturelles et camps jeunesse.</p>
+                        <a href="https://fr.wikipedia.org/wiki/Bourgogne-Franche-Comt%C3%A9" target="_blank" class="btn btn-link-red">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm region-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Nouvelle-Aquitaine</h5>
+                        <p class="card-text"><strong>Présent :</strong> Centres sociaux, soutien scolaire et actions éducatives.</p>
+                        <a href="https://fr.wikipedia.org/wiki/Nouvelle-Aquitaine" target="_blank" class="btn btn-link-red">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm region-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Auvergne-Rhône-Alpes</h5>
+                        <p class="card-text"><strong>Présent :</strong> Accueil social, accompagnement éducatif et activités culturelles.</p>
+                        <a href="https://fr.wikipedia.org/wiki/Auvergne-Rh%C3%B4ne-Alpes" target="_blank" class="btn btn-link-red">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm region-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Occitanie</h5>
+                        <p class="card-text"><strong>Présent :</strong> Crèches, centres sociaux et accompagnement communautaire.</p>
+                        <a href="https://fr.wikipedia.org/wiki/Occitanie" target="_blank" class="btn btn-link-red">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm region-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Provence-Alpes-Côte d’Azur</h5>
+                        <p class="card-text"><strong>Présent :</strong> Actions sociales, centres communautaires et accompagnement éducatif.</p>
+                        <a href="https://fr.wikipedia.org/wiki/Provence-Alpes-C%C3%B4te_d%E2%80%99Azur" target="_blank" class="btn btn-link-red">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="featurette-divider">
+
+    <!-- STATISTIQUES ANIMÉES -->
+    <section class="container text-center my-5 py-5">
+        <h2 class="section-title mb-5">Nos actions en chiffres</h2>
+        <div class="row">
+            <div class="col-md-3 mb-4 ">
+                <div class="stat-card">
+                    <p class="stat-label">Avec pour tout</p><h3 class="stat-number" data-target="123">0</h3>
+                    <p class="stat-label">Structures</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <p class="stat-label">Et</p><h3 class="stat-number" data-target="3743">0</h3>
+                    <p class="stat-label">Bénévoles</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 ">
+                <div class="stat-card">
+                    <p class="stat-label">Pour plus de</p><h3 class="stat-number" data-target="8000">0</h3>
+                    <p class="stat-label">Actions réalisées</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <p class="stat-label">et plus de</p><h3 class="stat-number" data-target="15000">0</h3>
+                    <p class="stat-label">Personnes aidées</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="featurette-divider">
+
+    <!-- TÉMOIGNAGES LOCAUX -->
+    <section class="container my-5 py-5">
+        <h2 class="section-title text-center mb-5">Témoignages locaux</h2>
+
+        <div class="testimonial-carousel position-relative">
+            <div class="testimonial-card shadow-sm">
+                <p class="testimonial-text">"Grâce à l'Armée du Salut, mes enfants ont trouvé des activités enrichissantes après l'école." <span class="testimonial-author">- Julie, Île-de-France</span></p>
+            </div>
+            <div class="testimonial-card shadow-sm">
+                <p class="testimonial-text">"Les bénévoles m'ont beaucoup aidé dans mes démarches administratives, merci !" <span class="testimonial-author">- Karim, Provence-Alpes-Côte d’Azur</span></p>
+            </div>
+            <div class="testimonial-card shadow-sm">
+                <p class="testimonial-text">"J'adore participer aux ateliers culturels proposés, c'est convivial et enrichissant." <span class="testimonial-author">- Marie, Bretagne</span></p>
+            </div>
+            <div class="testimonial-card shadow-sm">
+                <p class="testimonial-text">"Un accompagnement éducatif vraiment bénéfique pour ma famille." <span class="testimonial-author">- Thomas, Auvergne-Rhône-Alpes</span></p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // CARROUSEL AUTOMATIQUE DES TÉMOIGNAGES
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            testimonials.forEach((t, i) => {
+                t.style.display = i === index ? 'block' : 'none';
+            });
+        }
+
+        showTestimonial(currentTestimonial);
+
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+
+        // ANIMATION AU SCROLL DES TÉMOIGNAGES
+        const testimonialObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.testimonial-card').forEach(card => {
+            testimonialObserver.observe(card);
+        });
+    </script>
+
+    <script>
+        // Animation des compteurs
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200; // plus petit = plus rapide
+
+        const countersObserver = new IntersectionObserver((entries, obs) => {
+            if(entries[0].isIntersecting) {
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const increment = target / speed;
+                        if(count < target) {
+                            counter.innerText = Math.ceil(count + increment);
+                            setTimeout(updateCount, 20);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                });
+                obs.disconnect(); // animation une seule fois
+            }
+        }, { threshold: 0.5 });
+
+        countersObserver.observe(document.querySelector('.stat-number'));
+    </script>
+
+    <hr class="featurette-divider">
+
+    <!-- DÉCOUVREZ PLUS D’ACTIONS -->
+    <section class="container text-center my-5 py-5">
+        <h2 class="section-title">Découvrez plus d’actions</h2>
+        <p class="section-text mb-4">Visitez notre site officiel pour explorer toutes nos initiatives à travers la France.</p>
+        <a href="https://www.armeedusalut.fr/nos-actions/action-sociale/action-a-proximite" target="_blank" class="btn btn-danger mt-3">Voir plus</a>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Armée du Salut — Tous droits réservés</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/people/Fondation-de-lArm%25C3%25A9e-du-Salut-France/100064903023958/">
+            <img src="../logo/facebook-logo.png" alt="Facebook">
+          </a>
+          <a href="https://www.linkedin.com/company/arm%C3%A9e-du-salut-france">
+            <img src="../logo/linkedIn-logo.png" alt="LinkedIn">
+          </a>
+          <a href="https://www.instagram.com/armeedusalut/">
+            <img src="../logo/instagram-logo.png" alt="Instagram">
+          </a>
+        </div>
+      </div>
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

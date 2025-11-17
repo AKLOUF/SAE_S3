@@ -1,0 +1,52 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  margin-top: 70px; /* pour navbar fixe */
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(120deg, #b92b27, #ffc0c0);
+  color: white;
+  padding: 120px 20px;
+  border-radius: 0 0 30px 30px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Cards missions */
+.mission-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.mission-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Formulaire */
+form input, form textarea {
+  border-radius: 8px;
+  padding: 10px;
+}
+
+form button {
+  border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+}

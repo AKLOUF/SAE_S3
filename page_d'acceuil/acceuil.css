@@ -1,0 +1,122 @@
+/* body */
+body {
+  padding-top: 4rem;
+  text-align: justify;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* navbar */
+.navbar {
+  background-color: #011930; 
+}
+
+.dropdown-menu {
+  background-color: #011930 !important; 
+}
+
+.dropdown-item {
+  color: #fff !important; 
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #0b2035 !important; 
+  color: #fff !important;
+}
+
+.logo {
+  height: 40px;   
+  width: auto;   
+  object-fit: contain; 
+}
+
+/* Carousel */
+.carousel {
+  margin-bottom: 4rem;
+}
+
+.carousel-item img {
+  width: 100%;       
+  height: 75vh;     
+  object-fit: cover; 
+  display: block;
+  margin: 0 auto;    
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.3); 
+  padding: 1rem;                      
+  border-radius: 0.5rem;           
+}
+
+/* Marketing */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.img-after-carousel, .rounded-circle {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+}
+
+/* Featurette */
+.featurette-heading a:hover {
+  color: black;    
+  transform: scale(1.05);
+  text-decoration: none; 
+}
+
+.featurette-divider {
+  margin: 5rem 0;
+}
+
+.featurette-heading a {
+  text-decoration: underline;    
+  color: inherit;                
+  transition: color 0.3s, transform 0.3s;  
+}
+
+.featurette p {
+  font-size: 1.4rem;  
+}
+
+/* Footer */
+
+.footer {
+  background-color: #011930; 
+}
+.footer-social-logo {
+  width: 30px;   
+  height: 30px;      
+  object-fit: contain;
+  display: inline-block; 
+  margin-right: 5px; 
+}
+
+/* Responsive */
+@media(max-width: 1300px) {
+  .img-after-carousel {
+    display: none;
+  }
+  .col-md-7 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+} 
+
+@media (max-width: 650px) {
+  .carousel-caption p {
+  display: none;
+  }
+  .carousel-item img {
+    height: 50vh; 
+  }
+} 
+
+
+

@@ -1,0 +1,188 @@
+/* Base & typographie */
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fafafa;
+  color: #222;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+/* Navbar */
+
+.navbar {
+  background-color: #011930; 
+}
+
+.dropdown-menu {
+  background-color: #011930 !important;
+}
+
+.dropdown-item {
+  color: #fff !important; 
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #0b2035 !important; 
+  color: #fff !important;
+}
+
+.logo {
+  height: 40px;   
+  width: auto;    
+  object-fit: contain; 
+}
+
+/* Hero / bannière */
+.hero-spiritualite {
+  background: linear-gradient(100deg, #b6140e, #fba9a9);
+  color: white;
+  text-align: center;
+  padding: 100px 20px 60px;
+}
+
+.hero-spiritualite h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-spiritualite .subtitle {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Intro */
+.intro-spiritualite {
+  padding: 40px 0;
+}
+
+.intro-spiritualite p {
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Valeurs spirituelles (cartes) */
+.valeurs-spirituelles {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.valeurs-spirituelles h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  margin-bottom: 30px;
+}
+
+.valeurs-spirituelles .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.valeurs-spirituelles .card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.valeurs-spirituelles .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.valeurs-spirituelles .card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: #b92b27;
+  margin-bottom: 10px;
+}
+
+.valeurs-spirituelles .card p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Témoignage spirituel (carrousel)*/
+.temoignage-spirituel {
+  padding: 40px 0;
+  text-align: center;
+}
+.temoignage-spirituel h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.temoignage-spirituel p {
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* CTA / appel à l’action */
+.cta-spiritualite {
+  background-color: #ffd8d8;
+  padding: 60px 20px;
+}
+.cta-spiritualite h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+.cta-spiritualite p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+.cta-spiritualite .btn {
+  font-weight: 600;
+}
+
+/* Footer */
+.footer {
+  background-color: #011930;
+  color: white;
+  text-align: center;
+  padding: 30px 0;
+}
+.footer .socials img {
+  width: 24px;
+  margin: 0 10px;
+  transition: opacity 0.3s;
+}
+.footer .socials img:hover {
+  opacity: 0.7;
+}
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.footer .socials a {
+  display: inline-block;
+  margin: 0 2px; 
+}
+
+.footer .socials {
+  font-size: 0; 
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-spiritualite h1 {
+    font-size: 2.2rem;
+  }
+  .valeurs-spirituelles h2 {
+    font-size: 1.8rem;
+  }
+}

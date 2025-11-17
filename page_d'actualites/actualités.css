@@ -1,0 +1,149 @@
+/* Base & typographie */
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fafafa;
+  color: #222;
+}
+
+.container {
+  max-width: 1000px;
+}
+
+/* Navbar */
+
+.navbar {
+  background-color: #011930; 
+}
+
+.dropdown-menu {
+  background-color: #011930 !important; 
+}
+
+.dropdown-item {
+  color: #fff !important; 
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #0b2035 !important; 
+  color: #fff !important;
+}
+
+.logo {
+  height: 40px;  
+  width: auto;   
+  object-fit: contain; 
+}
+
+/* Hero de l’article */
+.hero-article {
+  padding: 80px 0 40px;
+  text-align: center;
+}
+.hero-article h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+.hero-article .subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 800px;
+  margin: auto;
+}
+.hero-article .meta {
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+/* Image article */
+.image-article {
+  margin: 30px 0;
+  text-align: center;
+
+}
+
+.image-article img {
+  width: 100%;
+  height: auto;
+  box-shadow: #555 0px 4px 12px;
+  border-radius: 8px;
+  max-width: 800px;
+}
+
+/* Contenu article */
+.contenu-article {
+  padding-bottom: 60px;
+}
+.contenu-article h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: #b92b27;
+}
+.contenu-article p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+.contenu-article .btn {
+  margin-top: 20px;
+}
+
+/* Call to Action */
+.cta {
+  padding: 60px 0;
+  background-color: #ffe7e7;
+}
+
+.cta h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Footer */
+.footer {
+  background-color: #011930;
+  color: white;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.footer .socials img {
+  width: 24px;
+  margin: 0 10px;
+  transition: opacity 0.3s;
+}
+
+.footer .socials img:hover {
+  opacity: 0.7;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.footer .socials a {
+  display: inline-block;
+  margin: 0 2px; 
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-article h1 {
+    font-size: 2.2rem;
+  }
+  .contenu-article h2 {
+    font-size: 1.5rem;
+  }
+}

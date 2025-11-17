@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" name="theme-color" content="bg-dark">
+    <title>Spiritualité</title>
+    <!-- Import de bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Import de la feuille de style CSS -->
+    <link rel="stylesheet" href="spiritualité.css">
+    <!-- Import des polices Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;600&family=Raleway:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Import du logo dans l'onglet -->
+    <link rel="icon" type="image/x-icon" href="../logo.png">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar navbar-dark fixed-top navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../page_d'acceuil/acceuil.html">
+            <img src="../logo/asso-logo.png" class="logo" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../page_d'acceuil/acceuil.html">Accueil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Spiritualité</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Action social </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="../page_jeunesse/jeunes.html">Jeunesse</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="../page_handicap/handicap.html">Handicap</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="../page_action_proximite/action_proximite.html">Action a proximité</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="https://www.armeedusalut.fr/nous-soutenir/">Faire un don</a>
+              </li>
+
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search" />
+              <button class="btn btn-outline-light" type="submit">Rechercher</button>
+            </form>
+          </div>
+        </div>
+        <script>
+          document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche le rechargement
+            // Récupère le texte entré
+            const query = document.querySelector('input[type="search"]').value.trim().toLowerCase();
+            // Dictionnaire des pages
+            const pages = {
+              "accueil": "../page_d'acceuil/acceuil.html",
+              "bénévolat": "../page_benevolat/benevolat.html",
+              "témoignages": "../page_des_temoignages/temoignages.html",
+              "actualités": "../page_d'actualites/actualités.html",
+              "spiritualité": "../page_spiritualité/spiritualité.html"
+            };
+            // Fonction pour calculer la distance de Levenshtein (mesure la "proximité" entre deux mots)
+            function levenshtein(a, b) {
+              const matrix = Array(a.length + 1).fill(null).map(() => Array(b.length + 1).fill(null));
+              for (let i = 0; i <= a.length; i++) matrix[i][0] = i;
+              for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+              for (let i = 1; i <= a.length; i++) {
+                for (let j = 1; j <= b.length; j++) {
+                  const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+                  matrix[i][j] = Math.min(matrix[i - 1][j] + 1, // suppression
+                    matrix[i][j - 1] + 1, // insertion
+                    matrix[i - 1][j - 1] + cost // substitution
+                  );
+                }
+              }
+              return matrix[a.length][b.length];
+            }
+            // Recherche de la page la plus proche
+            let bestMatch = null;
+            let minDistance = Infinity;
+            for (const [key, url] of Object.entries(pages)) {
+              const distance = levenshtein(query, key);
+              if (distance < minDistance) {
+                minDistance = distance;
+                bestMatch = url;
+              }
+            }
+            // Si la distance est raisonnable (tolérance d’erreur)
+            if (minDistance <= 3) { // <= 3 permet de tolérer 2-3 fautes max
+              window.location.href = bestMatch;
+            } else {
+              alert("Page non trouvée !");
+            }
+          });
+        </script>
+      </nav>
+    </header>
+    <main class="spiritualite-main">
+      <!-- Section héro / bannière -->
+      <section class="hero-spiritualite">
+        <div class="container">
+          <h1>Spiritualité & engagement</h1>
+          <p class="subtitle">Une voie de sens et de solidarité guidée par la foi et l’action</p>
+        </div>
+      </section>
+      <!-- Section intro / philosophie -->
+      <section class="intro-spiritualite">
+        <div class="container">
+          <p>La spiritualité à l’Armée du Salut n’est pas un simple concept religieux : elle est vivante, ancrée dans l’action, orientée vers le service aux plus vulnérables. Elle guide nos valeurs, motive nos engagements et inspire chacun à participer à une transformation intérieure et collective.</p>
+        </div>
+      </section>
+      <!-- Section valeurs spirituelles -->
+      <section class="valeurs-spirituelles">
+        <div class="container">
+          <h2>Nos piliers spirituels</h2>
+          <div class="cards">
+            <div class="card">
+              <h3>Foi & espérance</h3>
+              <p>Nous croyons en la dignité de chaque être humain, et en l’espérance de jours meilleurs.</p>
+            </div>
+            <div class="card">
+              <h3>Service & humilité</h3>
+              <p>S’engager au service de l’autre, avec simplicité et respect, est au cœur de notre mission.</p>
+            </div>
+            <div class="card">
+              <h3>Solidarité & compassion</h3>
+              <p>Être proche de ceux qui souffrent, écouter, accompagner, sans jugement.</p>
+            </div>
+            <div class="card">
+              <h3>Communauté & fraternité</h3>
+              <p>Vivre ensemble, partager, bâtir des liens durables au sein d’une maison spirituelle.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Section témoignage spirituel -->
+      <section class="temoignage-spirituel">
+        <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel" data-bs-pause="false">
+          <div class="carousel-inner text-center">
+            <div class="carousel-item active">
+              <div class="container">
+                <h2>Un témoignage éclairant</h2>
+                <p>“Quand je m’engage dans l’action, je marche dans la paix que je cherche.”</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <h2>Partage & engagement</h2>
+                <p>“Chaque geste de solidarité illumine notre communauté.”</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <h2>Espoir & entraide</h2>
+                <p>“L’union dans l’action donne de la force à notre foi.”</p>
+              </div>
+            </div>
+          </div>
+      </section>
+      <!-- Section appel à l’action / implication -->
+      <section class="cta-spiritualite">
+        <div class="container text-center">
+          <h2>Participez au chemin spirituel</h2>
+          <p>Que vous soyez croyant ou curieux, venez découvrir nos groupes, nos temps de prière, nos ateliers et engagements concrets.</p>
+          <a href="../page_benevolat/benevolat.html" class="btn btn-danger">Rejoindre le bénévolat</a>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Armée du Salut — Tous droits réservés</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/people/Fondation-de-lArm%25C3%25A9e-du-Salut-France/100064903023958/">
+            <img src="../logo/facebook-logo.png" alt="Facebook">
+          </a>
+          <a href="https://www.linkedin.com/company/arm%C3%A9e-du-salut-france">
+            <img src="../logo/linkedIn-logo.png" alt="LinkedIn">
+          </a>
+          <a href="https://www.instagram.com/armeedusalut/">
+            <img src="../logo/instagram-logo.png" alt="Instagram">
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!-- Bootstrap JS si nécessaire -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

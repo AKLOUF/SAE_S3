@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armée du Salut - Accueil</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Bootstrap CDN pour grid rapide -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Armée du Salut</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#missions">Missions</a></li>
+          <li class="nav-item"><a class="nav-link" href="#actions">Actions</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<section id="accueil" class="hero text-center">
+  <div class="container">
+    <h1>Bienvenue à l'Armée du Salut</h1>
+    <p>Depuis plus de 140 ans, nous accompagnons les plus vulnérables et luttons contre toutes les exclusions.</p>
+    <a href="#missions" class="btn btn-primary btn-lg mt-3">Découvrir nos missions</a>
+  </div>
+</section>
+
+<!-- Missions Section -->
+<section id="missions" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Nos Missions</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card mission-card text-center p-3">
+          <img src="https://images.openai.com/thumbnails/url/zLLNl3icu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw7yc4uKDPHKcs5y846I8i9LCs1NDCsoMY9M8jZ2TTZLyiwIdTdItnQLrioMVCu2NTQAAAzpJP0" alt="Aide sociale" class="card-img-top rounded">
+          <div class="card-body">
+            <h3>Aide sociale</h3>
+            <p>Accompagner les personnes en difficulté pour améliorer leur quotidien.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mission-card text-center p-3">
+          <img src="https://images.openai.com/thumbnails/url/K0Tyu3icu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw5xdcxOLSiOrLAMMalw9030NPVNdzQM8SzISg2oKva1LC708fSpiM_Ld3JOVyu2NTQAABKkJVY" alt="Bénévolat" class="card-img-top rounded">
+          <div class="card-body">
+            <h3>Bénévolat</h3>
+            <p>Rejoignez nos équipes et participez activement à nos projets.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mission-card text-center p-3">
+          <img src="https://images.openai.com/thumbnails/url/d4XqnXicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw7KznBzLzX1KwrLKgqJ944vN091jDcsKdc1qbTwLCtxyygyzvWv0A0w9CguVyu2NTQAABedJUg" alt="Spiritualité" class="card-img-top rounded">
+          <div class="card-body">
+            <h3>Spiritualité</h3>
+            <p>Une approche spirituelle guidée par la foi et l’action sociale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5">
+  <div class="container text-center">
+    <h2>Contact</h2>
+    <p>Vous souhaitez nous contacter ? Remplissez le formulaire ci-dessous.</p>
+    <form class="mx-auto mt-4" style="max-width: 600px;">
+      <input type="text" class="form-control mb-2" placeholder="Nom">
+      <input type="email" class="form-control mb-2" placeholder="Email">
+      <textarea class="form-control mb-2" placeholder="Message"></textarea>
+      <button type="submit" class="btn btn-primary mt-2">Envoyer</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+  <p>&copy; 2025 Armée du Salut - France</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

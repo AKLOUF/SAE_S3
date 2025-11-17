@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" name="theme-color" content="bg-dark">
+    <title>Actualités</title>
+    <!-- Import de bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Import de la feuille de style CSS -->
+    <link rel="stylesheet" href="actualités.css">
+    <!-- Import des polices Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;600&family=Raleway:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Import du logo dans l'onglet -->
+    <link rel="icon" type="image/x-icon" href="../logo.png">
+  </head>
+  <body>
+    <!-- Navbar (même style que ta page Bénévolat) -->
+    <nav class="navbar navbar-dark fixed-top navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../page_d'acceuil/acceuil.html">
+          <img src="../logo/asso-logo.png" class="logo" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="../page_d'acceuil/acceuil.html">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../page_spiritualité/spiritualité.html">Spiritualité</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Action social </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="../page_jeunesse/jeunes.html">Jeunesse</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../page_handicap/handicap.html">Handicap</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../page_action_proximite/action_proximite.html">Action a proximité</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="https://www.armeedusalut.fr/nous-soutenir/">Faire un don</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search" />
+            <button class="btn btn-outline-light" type="submit">Rechercher</button>
+          </form>
+        </div>
+      </div>
+      <script>
+        document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
+          event.preventDefault(); // Empêche le rechargement
+          // Récupère le texte entré
+          const query = document.querySelector('input[type="search"]').value.trim().toLowerCase();
+          // Dictionnaire des pages
+          const pages = {
+            "accueil": "../page_d'acceuil/acceuil.html",
+            "bénévolat": "../page_benevolat/benevolat.html",
+            "témoignages": "../page_des_temoignages/temoignages.html",
+            "actualités": "../page_d'actualites/actualités.html",
+            "spiritualité": "../page_spiritualité/spiritualité.html"
+          };
+          // Fonction pour calculer la distance de Levenshtein (mesure la "proximité" entre deux mots)
+          function levenshtein(a, b) {
+            const matrix = Array(a.length + 1).fill(null).map(() => Array(b.length + 1).fill(null));
+            for (let i = 0; i <= a.length; i++) matrix[i][0] = i;
+            for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+            for (let i = 1; i <= a.length; i++) {
+              for (let j = 1; j <= b.length; j++) {
+                const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+                matrix[i][j] = Math.min(matrix[i - 1][j] + 1, // suppression
+                  matrix[i][j - 1] + 1, // insertion
+                  matrix[i - 1][j - 1] + cost // substitution
+                );
+              }
+            }
+            return matrix[a.length][b.length];
+          }
+          // Recherche de la page la plus proche
+          let bestMatch = null;
+          let minDistance = Infinity;
+          for (const [key, url] of Object.entries(pages)) {
+            const distance = levenshtein(query, key);
+            if (distance < minDistance) {
+              minDistance = distance;
+              bestMatch = url;
+            }
+          }
+          // Si la distance est raisonnable (tolérance d’erreur)
+          if (minDistance <= 3) { // <= 3 permet de tolérer 2-3 fautes max
+            window.location.href = bestMatch;
+          } else {
+            alert("Page non trouvée !");
+          }
+        });
+      </script>
+    </nav>
+    </header>
+    <main class="article-main">
+      <section class="hero-article">
+        <div class="container">
+          <h1>Retour sur le Donut Day 2025 : une journée festive et solidaire</h1>
+          <p class="subtitle">Le vendredi 6 juin 2025, l’Armée du Salut célébrait la troisième édition française du Donut Day...</p>
+          <div class="meta">
+            <span><strong>Publié le 18 juin 2025</strong></span>
+            <span>•</span>
+            <span><strong>Actualité</strong></span>
+          </div>
+        </div>
+      </section>
+      <section class="image-article">
+        <div class="container">
+          <img src="actualités.webp" alt="Distribution de donuts" />
+        </div>
+      </section>
+      <br>
+      <section class="contenu-article">
+        <div class="container">
+          <p>Le vendredi 6 juin 2025, l’Armée du Salut célébrait la troisième édition française du Donut Day, une journée mondiale de solidarité… et vous étiez au rendez-vous !</p>
+          <h2>Une mobilisation nationale</h2>
+          <p>De Lille à Marseille, en passant par Paris, Strasbourg, Nancy, Lyon et bien d’autres villes, le Donut Day a rayonné dans plus de 45 villes de France. Grâce à la générosité de notre partenaire Doony’s, <strong>près de 60 000 donuts ont été partagés avec le grand public, les partenaires, les résidents, les bénévoles et les passants.</strong>
+          </p>
+          <h2>Une tradition solidaire venue du front</h2>
+          <p>Cette journée est bien plus qu’un simple moment de gourmandise : elle rend hommage à un épisode méconnu de la Première Guerre mondiale. À cette époque, des femmes volontaires de l’Armée du Salut – surnommées les “Donut Lassies” – soutenaient le moral des soldats en leur confectionnant des beignets, parfois même frits dans des casques ! Depuis 1938, le Donut Day perpétue cette tradition aux États-Unis, et en France depuis 2023.</p>
+          <h2>Un clip musical pour célébrer l’esprit du Donut Day</h2>
+          <p>Nouveauté 2025 : le Donut Day a désormais son clip musical officiel ! Entre bonne humeur, donuts et musique entraînante, ce clip incarne parfaitement l’esprit de partage qui a animé cette journée. À écouter et partager sans modération !</p>
+          <p>Un immense merci à toutes les équipes de terrain, aux bénévoles, aux salariés engagés, aux partenaires, et à toutes celles et ceux qui ont contribué à faire de cette journée un véritable moment de partage, de sourires et de lien humain. Rendez-vous en 2026 pour une édition encore plus savoureuse, festive et solidaire !</p>
+        </div>
+      </section>
+      <section class="cta">
+        <div class="container text-center">
+          <h3>Participez à nos projets</h3>
+          <p>Rejoignez les bénévoles ou soutenez nos actions solidaires dès aujourd’hui !</p>
+          <a href="../page_benevolat/benevolat.html" class="btn btn-danger btn-lg">Je participe</a>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Armée du Salut — Tous droits réservés</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/people/Fondation-de-lArm%25C3%25A9e-du-Salut-France/100064903023958/">
+            <img src="../logo/facebook-logo.png" alt="Facebook">
+          </a>
+          <a href="https://www.linkedin.com/company/arm%C3%A9e-du-salut-france">
+            <img src="../logo/linkedin-logo.png" alt="LinkedIn">
+          </a>
+          <a href="https://www.instagram.com/armeedusalut/">
+            <img src="../logo/instagram-logo.png" alt="Instagram">
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!-- Script Bootstrap JS (si tu utilises bootstrap) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

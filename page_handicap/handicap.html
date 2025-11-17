@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="auto">
+<head>
+    <meta charset="utf-8">
+    <title>Handicap - Armée du Salut</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="handicap.css">
+    <link rel="icon" type="image/x-icon" href="../logo/asso-logo.png">
+
+    <!-- Polices -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <nav class="navbar navbar-dark navbar-custom fixed-top navbar-expand-lg">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="../page_d'acceuil/acceuil.html">
+                <img src="../logo/asso-logo.png" class="logo" alt="">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="../page_d'acceuil/acceuil.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../page_spiritualité/spiritualité.html">Spiritualité</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Action sociale</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../page_jeunesse/jeunes.html">Jeunesse</a></li>
+                            <li><a class="dropdown-item" href="../page_handicap/handicap.html">Handicap</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../page_action_proximite/action_proximite.html">Action à proximité</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="https://www.armeedusalut.fr/nous-soutenir/">Faire un don</a></li>
+                </ul>
+
+                <!-- BARRE DE RECHERCHE -->
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" id="searchInput" list="suggestions" type="search" placeholder="Rechercher">
+                    <datalist id="suggestions"></datalist>
+                    <button class="btn btn-outline-light" type="submit">Rechercher</button>
+                </form>
+
+                <script>
+                    const searchInput = document.getElementById("searchInput");
+                    const suggestions = document.getElementById("suggestions");
+
+                    const pages = {
+                        "accueil": "../page_d'acceuil/acceuil.html",
+                        "spiritualité": "../page_spiritualité/spiritualité.html",
+                        "jeunesse": "../page_jeunesse/jeunes.html",
+                        "handicap": "../page_handicap/handicap.html",
+                        "actualités": "../page_d'actualites/actualités.html",
+                        "bénévolat": "../page_benevolat/benevolat.html",
+                        "témoignages": "../page_des_temoignages/temoignages.html"
+                    };
+
+                    searchInput.addEventListener("input", () => {
+                        const query = searchInput.value.toLowerCase();
+                        suggestions.innerHTML = "";
+                        if (query.length > 0) {
+                            Object.keys(pages).forEach(key => {
+                                if (key.startsWith(query)) {
+                                    const option = document.createElement("option");
+                                    option.value = key;
+                                    suggestions.appendChild(option);
+                                }
+                            });
+                        }
+                    });
+
+                    document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
+                        event.preventDefault();
+                        const value = searchInput.value.toLowerCase();
+                        if (pages[value]) window.location.href = pages[value];
+                        else alert("Page non trouvée !");
+                    });
+                </script>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+    <!-- CARROUSEL -->
+    <div id="carouselHandicap" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="handicap-carrousel.jpg" class="d-block w-100 carousel-img" alt="">
+                <div class="carousel-caption d-flex align-items-center justify-content-center carousel-title-box">
+                    <h1 class="carousel-main-title">Accompagner le Handicap</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- SECTION 1 -->
+    <section class="container my-5 py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section-title">Un accompagnement bienveillant et adapté</h2>
+                <p class="section-text">
+                    L’Armée du Salut accompagne les <strong>enfants, adolescents et adultes en situation de handicap</strong>
+                    au sein d’<strong>établissements spécialisés</strong> favorisant
+                    <span class="red-highlight">l’inclusion sociale, l’autonomie et la dignité</span>.
+                    <br><br>
+                    Nos équipes <strong>éducatives, médicales et sociales</strong> accompagnent chaque personne selon
+                    son <strong>projet de vie personnel</strong>.
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="handicap1.jpg" class="section-image" alt="">
+            </div>
+        </div>
+    </section>
+
+    <hr class="featurette-divider">
+
+    <!-- NOS VALEURS -->
+    <section class="container text-center my-5">
+        <h2 class="section-title">Nos valeurs</h2>
+        <div class="row mt-4">
+            <div class="col-lg-4">
+                <h4>🤝 Respect</h4>
+                <p class="section-text">Chaque personne est accueillie comme <strong>unique et précieuse</strong>.</p>
+            </div>
+            <div class="col-lg-4">
+                <h4>🌱 Autonomie</h4>
+                <p class="section-text">Nous accompagnons vers une <span class="red-highlight">plus grande indépendance</span>.</p>
+            </div>
+            <div class="col-lg-4">
+                <h4>❤️ Bienveillance</h4>
+                <p class="section-text">L’écoute, la confiance et la chaleur humaine sont au centre.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="featurette-divider">
+
+    <!-- SECTION 2 -->
+    <section class="container my-5 py-5">
+        <div class="row align-items-center flex-lg-row-reverse">
+            <div class="col-lg-6">
+                <h2 class="section-title">Favoriser l’inclusion dans la société</h2>
+                <p class="section-text">
+                    Ateliers créatifs, activités sportives, accompagnement vers l’emploi,
+                    <span class="red-highlight">lieux de vie partagés</span> : tout est pensé pour permettre à chacun
+                    <strong>d’exister pleinement dans la société</strong>.
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="handicap2.jpg" class="section-image" alt="">
+            </div>
+        </div>
+    </section>
+
+    <hr class="featurette-divider">
+
+    <!-- TEMOIGNAGE -->
+    <section class="container my-5 text-center">
+        <blockquote class="blockquote">
+            <p class="section-text">« Ici, j’ai retrouvé confiance. On m’écoute, on m’encourage, on croit en moi. »</p>
+        </blockquote>
+        <p class="red-highlight fw-bold">Julien, 22 ans</p>
+    </section>
+
+    <hr class="featurette-divider">
+
+    <!-- TROUVER UN ÉTABLISSEMENT -->
+    <section class="container text-center my-5">
+        <h2 class="section-title">Trouver un établissement près de chez vous</h2>
+        <p class="section-text">Découvrez les structures de l’Armée du Salut dans votre région.</p>
+        <a href="https://www.armeedusalut.fr/etablissements" target="_blank" class="btn btn-danger mt-3">Chercher un établissement</a>
+    </section>
+
+    <hr class="featurette-divider">
+
+    <!-- ENGAGEMENT -->
+    <section class="container text-center my-5">
+        <h2 class="section-title">Vous souhaitez vous engager ?</h2>
+        <a href="#" class="btn btn-danger m-2">Devenir bénévole</a>
+        <a href="#" class="btn btn-danger m-2">Faire un don</a>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Armée du Salut — Tous droits réservés</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/people/Fondation-de-lArm%25C3%25A9e-du-Salut-France/100064903023958/">
+            <img src="../logo/facebook-logo.png" alt="Facebook">
+          </a>
+          <a href="https://www.linkedin.com/company/arm%C3%A9e-du-salut-france">
+            <img src="../logo/linkedIn-logo.png" alt="LinkedIn">
+          </a>
+          <a href="https://www.instagram.com/armeedusalut/">
+            <img src="../logo/instagram-logo.png" alt="Instagram">
+          </a>
+        </div>
+      </div>
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

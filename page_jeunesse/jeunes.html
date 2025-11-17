@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="auto">
+<head>
+    <meta charset="utf-8">
+    <title>Jeunesse - Armée du Salut</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="jeunes.css">
+    <!-- Polices -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Logo onglet -->
+    <link rel="icon" type="image/x-icon" href="../logo.png">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <nav class="navbar navbar-dark navbar-custom fixed-top navbar-expand-lg">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="../page_d'acceuil/acceuil.html">
+                <img src="../logo/asso-logo.png" class="logo" alt="">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="../page_d'acceuil/acceuil.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../page_spiritualité/spiritualité.html">Spiritualité</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Action sociale</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../page_jeunesse/jeunes.html">Jeunesse</a></li>
+                            <li><a class="dropdown-item" href="../page_handicap/handicap.html">Handicap</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../page_action_proximite/action_proximite.html">Action à proximité</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="https://www.armeedusalut.fr/nous-soutenir/">Faire un don</a></li>
+                </ul>
+
+                <!-- BARRE DE RECHERCHE -->
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" id="searchInput" list="suggestions" type="search" placeholder="Rechercher">
+                    <datalist id="suggestions"></datalist>
+                    <button class="btn btn-outline-light" type="submit">Rechercher</button>
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- Script recherche intelligente -->
+        <script>
+            const searchInput = document.getElementById("searchInput");
+            const suggestions = document.getElementById("suggestions");
+
+            const pages = {
+                "accueil": "../page_d'acceuil/acceuil.html",
+                "bénévolat": "../page_benevolat/benevolat.html",
+                "témoignages": "../page_des_temoignages/temoignages.html",
+                "actualités": "../page_d'actualites/actualités.html",
+                "spiritualité": "../page_spiritualité/spiritualité.html",
+                "jeunesse": "../page_jeunesse/jeunes.html"
+            };
+
+            searchInput.addEventListener("input", () => {
+                const query = searchInput.value.toLowerCase();
+                suggestions.innerHTML = "";
+                if (query.length > 0) {
+                    Object.keys(pages).forEach(key => {
+                        if (key.startsWith(query)) {
+                            const option = document.createElement("option");
+                            option.value = key;
+                            suggestions.appendChild(option);
+                        }
+                    });
+                }
+            });
+
+            document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const value = searchInput.value.toLowerCase();
+                if (pages[value]) window.location.href = pages[value];
+                else alert("Page non trouvée !");
+            });
+        </script>
+
+    </nav>
+</header>
+
+<main>
+
+    <!-- CARROUSEL -->
+    <div id="carouselJeunes" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="jeunesse-carrousel.jpg" class="d-block w-100 carousel-img" alt="">
+                <div class="carousel-caption d-flex align-items-center justify-content-center carousel-title-box">
+                    <h1 class="carousel-main-title">La jeunesse de l'Armée du Salut</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- SECTION 1 -->
+    <section class="container my-5 py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section-title">Actions d’aide pour l’éducation populaire</h2>
+                <p class="section-text">
+                    L’Armée du Salut déploie une variété d’actions pour soutenir les <strong>enfants</strong> et favoriser <strong>l’éducation populaire</strong>. Nous proposons des <strong>crèches</strong> stimulant les échanges intergénérationnels, permettant aux tout-petits d’évoluer dans un cadre chaleureux.
+                    <br><br>Notre <span class="red-highlight">résidence maternelle</span> accompagne les jeunes mères confrontées à des <strong>fragilités sociales, familiales ou psychologiques</strong>.
+                    <br><br>À travers nos <strong>maisons d’enfants et foyers</strong>, nous accueillons des jeunes rencontrant des difficultés familiales, en leur offrant un <strong>environnement stable, bienveillant et sécurisant</strong>.
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="jeunesse1.jpg" class="section-image" alt="">
+            </div>
+        </div>
+    </section>
+
+    <hr class="featurette-divider">
+
+    <!-- SECTION 2 -->
+    <section class="container my-5 py-5">
+        <div class="row align-items-center flex-lg-row-reverse">
+            <div class="col-lg-6">
+                <h2 class="section-title">Activités pour aider les jeunes à grandir</h2>
+                <p class="section-text">
+                    Nos <span class="red-highlight">Instituts thérapeutiques éducatifs et pédagogiques (ITEP)</span> accompagnent les enfants présentant des <strong>troubles du comportement</strong> et de l’apprentissage.
+                    <br><br>Notre <strong>centre social</strong> favorise l’égalité <strong>dans l'accès à l’éducation, aux savoirs et aux loisirs</strong>, renforçant ainsi la cohésion sociale et l’inclusion.
+                    <br><br>Nous organisons également <strong>colonies, camps et activités de scoutisme</strong> afin de développer :
+                    <br>• l’<strong>autonomie</strong>
+                    <br>• la <strong>confiance en soi</strong>
+                    <br>• le <strong>sens du collectif</strong>
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="jeunesse2.jpg" class="section-image" alt="">
+            </div>
+        </div>
+    </section>
+
+    <hr class="featurette-divider">
+
+    <!-- SECTION 3 -->
+    <section class="container my-5 py-5 text-center">
+        <h2 class="section-title">Les actions d’aide à l’enfance de l’Armée du Salut</h2>
+        <p class="section-text text-center">
+            Découvrez l’ensemble des initiatives mises en œuvre afin de <strong>soutenir, protéger et accompagner l’enfance</strong>.
+        </p>
+
+        <a href="https://www.armeedusalut.fr/nos-actions/action-sociale/jeunesse" target="_blank" class="btn btn-danger mt-3">
+            Voir plus
+        </a>
+    </section>
+
+</main>
+
+<!-- FOOTER identique à la page accueil.html -->
+<footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Armée du Salut — Tous droits réservés</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/people/Fondation-de-lArm%25C3%25A9e-du-Salut-France/100064903023958/">
+            <img src="../logo/facebook-logo.png" alt="Facebook">
+          </a>
+          <a href="https://www.linkedin.com/company/arm%C3%A9e-du-salut-france">
+            <img src="../logo/linkedIn-logo.png" alt="LinkedIn">
+          </a>
+          <a href="https://www.instagram.com/armeedusalut/">
+            <img src="../logo/instagram-logo.png" alt="Instagram">
+          </a>
+        </div>
+      </div>
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

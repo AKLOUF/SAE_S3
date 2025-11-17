@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="auto">
+  <head>
+    <meta charset="utf-8" name="theme-color" content="bg-dark">
+    <title>Accueil</title>
+    <!-- Import de bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Import de la feuille de style CSS -->
+    <link rel="stylesheet" href="acceuil.css">
+    <!-- Import des polices Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;600&family=Raleway:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Import du logo dans l'onglet -->
+    <link rel="icon" type="image/x-icon" href="../logo/asso-logo.png">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-dark fixed-top navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="">
+            <img src="../logo/asso-logo.png" class="logo" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../page_d'acceuil/acceuil.html">Accueil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../page_spiritualité/spiritualité.html">Spiritualité</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Action social </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="../page_jeunesse/jeunes.html">Jeunesse</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="../page_handicap/handicap.html">Handicap</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="../page_action_proximite/action_proximite.html">Action a proximité</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="https://www.armeedusalut.fr/nous-soutenir/">Faire un don</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search" />
+              <button class="btn btn-outline-light" type="submit">Rechercher</button>
+            </form>
+          </div>
+        </div>
+        <script>
+          document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche le rechargement
+            // Récupère le texte entré
+            const query = document.querySelector('input[type="search"]').value.trim().toLowerCase();
+            // Dictionnaire des pages
+            const pages = {
+              "accueil": "../page_d'acceuil/acceuil.html",
+              "bénévolat": "../page_benevolat/benevolat.html",
+              "témoignages": "../page_des_temoignages/temoignages.html",
+              "actualités": "../page_d'actualites/actualités.html",
+              "spiritualité": "../page_spiritualité/spiritualité.html"
+            };
+            // Fonction pour calculer la distance de Levenshtein (mesure la "proximité" entre deux mots)
+            function levenshtein(a, b) {
+              const matrix = Array(a.length + 1).fill(null).map(() => Array(b.length + 1).fill(null));
+              for (let i = 0; i <= a.length; i++) matrix[i][0] = i;
+              for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+              for (let i = 1; i <= a.length; i++) {
+                for (let j = 1; j <= b.length; j++) {
+                  const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+                  matrix[i][j] = Math.min(matrix[i - 1][j] + 1, // suppression
+                    matrix[i][j - 1] + 1, // insertion
+                    matrix[i - 1][j - 1] + cost // substitution
+                  );
+                }
+              }
+              return matrix[a.length][b.length];
+            }
+            // Recherche de la page la plus proche
+            let bestMatch = null;
+            let minDistance = Infinity;
+            for (const [key, url] of Object.entries(pages)) {
+              const distance = levenshtein(query, key);
+              if (distance < minDistance) {
+                minDistance = distance;
+                bestMatch = url;
+              }
+            }
+            // Si la distance est raisonnable (tolérance d’erreur)
+            if (minDistance <= 3) { // <= 3 permet de tolérer 2-3 fautes max
+              window.location.href = bestMatch;
+            } else {
+              alert("Page non trouvée !");
+            }
+          });
+        </script>
+      </nav>
+    </header>
+    <main>
+      <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel" data-bs-pause="false">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="image1.jpg" alt="">
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h1>Notre histoire</h1>
+                <p>L’Armée du Salut, mouvement international, fait partie de l’ensemble des églises chrétiennes. Son message se fonde sur la Bible. Son ministère est inspiré par l’amour de Dieu. Sa mission est d’annoncer l’Evangile de Jésus-Christ et de soulager, en son nom, sans discrimination, les détresses humaines.</p>
+                <a class="btn btn-lg btn-outline-light" href="#">En savoir plus</a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="image2.jpg" alt="">
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h1>Venez nous rejoindre</h1>
+                <p>BlocksRejoindre l'Armée du Salut c'est s'engager au service de la société. Comme bénévole, salarié-e-s, en service civique, officier ou soldat, il existe différentes formes d'engagement pour aider et accompagner les personnes isolées, en détresse, précaires, dépendantes, fragilisées.</p>
+                <a class="btn btn-lg btn-outline-light" href="#">En savoir plus</a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="image3.jpg" alt="">
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h1>Nos missions</h1>
+                <p>Prendre soin des personnes est le centre de la démarche de la Congrégation et de la Fondation de l’Armée du Salut. Les deux entités accueillent, soutiennent, et accompagnent les femmes et les hommes de toute origine et condition sans distinction aucune. </p>
+                <a class="btn btn-lg btn-outline-light" href="#">En savoir plus</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Marketing messaging and featurettes
+  ================================================== -->
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+      <div class="container marketing">
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+          <div class="col-lg-4">
+            <img src="Devenir-benevole.jpg" class="rounded-circle" height="140" width="140">
+            <h2 class="fw-normal">Devenir Bénévole</h2>
+            <p>Chaque personne a des compétences qui peuvent être utiles aux personnes fragiles. Aide alimentaire, cours de français, accompagnement des personnes âgées, animations.</p>
+            <p>
+              <a class="btn btn-danger" href="../page_benevolat/benevolat.html">Voir détails &raquo;</a>
+            </p>
+          </div>
+          <!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img src="Devenir-salarie.jpg" class="rounded-circle" height="140" width="140">
+            <h2 class="fw-normal">Devenir Salarié</h2>
+            <p>Près de 100 métiers sont exercés chaque jour au service des personnes accueillies dans les différents domaines tels que l’insertion sociale, les personnes âgées, les personnes en situation de handicap, le secteur social et le secteur sanitaire.</p>
+            <p>
+              <a class="btn btn-danger" href="#">Voir détails &raquo;</a>
+            </p>
+          </div>
+          <!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img src="Devenir-soldat.jpg" class="rounded-circle" height="140" width="140">
+            <h2 class="fw-normal">Devenir Soldat</h2>
+            <p>Un soldat est une personne qui croit en Dieu et fréquente un poste (paroisse) de la Congrégation de l’Armée du Salut et qui décide de s’engager en faveur de son église.</p>
+            <p>
+              <a class="btn btn-danger" href="#">Voir détails &raquo;</a>
+            </p>
+          </div>
+          <!-- /.col-lg-4 -->
+        </div>
+        <!-- /.row -->
+        <!-- START THE FEATURETTES -->
+        <hr class="featurette-divider">
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">
+              <a href="../page_des_temoignages/temoignages.html">Témoignages</a>
+            </h2>
+            <br>
+            <p>A la rue depuis plusieurs années, Pascal vit aujourd’hui dans une pension de famille de l’Armée du Salut à Reims. Aujourd’hui, il a retrouvé un toit et un lien humain. Il témoigne.</p>
+          </div>
+          <br>
+          <div class="col-md-5">
+            <img src="../page_des_temoignages/temoignages.jpg" height="300" width="500" class="img-after-carousel" alt="">
+          </div>
+        </div>
+        <hr class="featurette-divider">
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">
+              <a href="../page_d'actualites/actualités.html">Actualités</a>
+            </h2>
+            <br>
+            <p>Le vendredi 6 juin 2025, l’Armée du Salut célébrait la troisième édition française du Donut Day, une journée mondiale de solidarité… et vous étiez au rendez-vous ! </p>
+          </div>
+          <br>
+          <div class="col-md-5 col-sm-0">
+            <img src="../page_d'actualites/actualités.webp" height="300" width="500" class="img-after-carousel" alt="">
+          </div>
+        </div>
+    </main>
+    <footer class="footer text-white pt-5 pb-3 mt-5">
+      <div class="container">
+        <div class="row">
+          <!-- Liens rapides -->
+          <div class="col-6 col-md-3 mb-3">
+            <h6>Liens utiles</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="../page_d'acceuil/acceuil.html" class="text-white text-decoration-none">Accueil</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">À propos</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Nos missions</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Ressources -->
+          <div class="col-6 col-md-3 mb-3">
+            <h6>Ressources</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="../page_d'actualites/actualités.html" class="text-white text-decoration-none">Actualités</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Blog</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">FAQ</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Donations</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Réseaux sociaux -->
+          <div class="col-md-6 mb-3 text-white">
+            <h6>Suivez-nous</h6>
+            <div class="d-flex gap-2">
+              <a href="https://www.facebook.com/people/Fondation-de-lArm%25C3%25A9e-du-Salut-France/100064903023958/" class="btn btn-sm ">
+                <img src="../logo/facebook-logo.png" alt="" class="footer-social-logo">
+              </a>
+              <a href="https://www.linkedin.com/company/fondation-armee-du-salut/" class="btn btn-sm ">
+                <img src="../logo/linkedIn-logo.png" alt="" class="footer-social-logo">
+              </a>
+              <a href="https://www.instagram.com/armeedusalutfrance/?hl=fr" class="btn btn-sm ">
+                <img src="../logo/instagram-logo.png" alt="" class="footer-social-logo">
+              </a>
+            </div>
+          </div>
+        </div>
+        <hr class="bg-dark">
+        <div class="d-flex justify-content-between ">
+          <p class="mb-0">&copy; 2025 Armée du Salut. Tous droits réservés.</p>
+          <p class="mb-0">
+            <a href="#" class="text-white text-decoration-none">Politique de confidentialité</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
