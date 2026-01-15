@@ -1,0 +1,205 @@
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Corps de la page */
+body {
+    background-color: #f5f5f5;
+    padding: 20px;
+    color: #333;
+}
+/* Navbar */
+.navbar {
+  background-color: #011930; 
+}
+
+.dropdown-menu {
+  background-color: #011930 !important; 
+}
+
+.dropdown-item {
+  color: #fff !important; 
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #0b2035!important; 
+  color: #fff !important;
+}
+
+.logo {
+  height: 40px;   
+  width: auto;   
+  object-fit: contain; 
+}
+
+/* Titre principal */
+.page-title {
+    font-family: 'Playfair Display', serif;
+    padding-top: 55px;
+    font-size: 2rem;
+    color: #2c3e50;
+}
+
+/* Formulaire de filtre */
+form.row.g-3 {
+    margin-bottom: 30px;
+}
+
+form input.form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+}
+
+form button.btn-primary {
+    background-color: #3498db;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+form button.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+/* Boutons d'action */
+.page-actions {
+    margin-bottom: 20px;
+}
+
+.page-actions .btn {
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+/* Container des cartes */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Cartes de bénévoles */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Header de la carte */
+.card-header {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.card-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+}
+
+.card-header .badge {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+}
+
+/* Contenu de la carte */
+.card-content {
+    list-style: none;
+}
+
+.card-content li {
+    font-family: 'Open Sans', serif;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.card-content li strong {
+    color: #555;
+}
+
+/* Actions de la carte */
+.card-actions {
+    margin-top: auto; /* pousse les boutons en bas */
+    display: flex;
+    gap: 10px; /* espace entre les boutons */
+    flex-wrap: wrap;
+}
+
+.card-actions .btn-primary {
+    background-color: #1abc9c;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.card-actions .btn-primary:hover {
+    background-color: #16a085;
+}
+
+
+.card-actions .btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.btn-subv {
+    border: none;
+    margin-bottom: 20px;
+}
+
+/* Styles des tabs */
+.nav-tabs .nav-link {
+    color: #333;               
+    background-color: #f8f9fa; 
+    border: 1px solid #dee2e6;
+    border-bottom: none;
+    transition: all 0.3s ease;
+}
+
+/* Onglet actif uniquement si la classe .active est présente */
+.nav-tabs .nav-link.active {
+    color: #fff;               
+    background-color: #dc3545; 
+    border-color: #dc3545 #dc3545 #fff;
+    z-index: 1; /* Assure que l'onglet actif soit au-dessus */
+}
+
+/* Hover pour onglets inactifs seulement */
+.nav-tabs .nav-link:not(.active):hover {
+    background-color: #e2e6ea; 
+    color: #000;
+}
+
+/* Listes dans les cartes */
+.card-content {
+    list-style-type: disc;
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+
+.card-content li {
+    margin-left: 0;
+}
+/* Responsive */
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-actions .btn {
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,138 @@
+/* ===== Style global ===== */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Titre ===== */
+h1 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    margin-top: 30px;
+    color: #222;
+}
+
+/* ===== Formulaire ===== */
+form {
+    background-color: #ffffff;
+    max-width: 650px;            /* 🔁 même largeur */
+    margin: 30px auto;
+    padding: 30px;               /* 🔁 padding uniforme */
+    border: 2px solid #000;      /* 🔁 bordure noire */
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== Sections ===== */
+form h3 {
+    font-family: 'Playfair Display', serif;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+/* ===== Labels ===== */
+form label {
+    font-family: 'Open Sans', serif;
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 10px; /* ⬅️ réduit légèrement l’espace entre les champs */
+}
+/* ===== Champs ===== */
+form input[type="text"],
+form input[type="email"],
+form input[type="date"],
+form input[type="password"],
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 12px;
+    margin-bottom: 12px;  /* ⬆️ augmente le margin-top pour plus d’espace vertical */
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 0.95em;
+}
+
+/* Focus */
+form input:focus,
+form select:focus {
+    border-color: #2196F3;
+    outline: none;
+}
+
+/* ===== Checkbox ===== */
+form input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-left: 10px;
+}
+
+/* ===== Bouton ===== */
+form button {
+    display: block;
+    margin: 25px auto 0;
+    padding: 12px 20px;
+    background-color: #2196F3;   /* 🔁 même bleu */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+form button:hover {
+    background-color: #1976D2;
+}
+
+/* ===== Messages ===== */
+.message-error,
+.message-success {
+    max-width: 650px;
+    margin: 20px auto;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.message-error {
+    background-color: #fdecea;
+    color: #c62828;
+}
+
+.message-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* ===== Lien retour ===== */
+a {
+    display: block;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2196F3;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.from-group {   
+    display: flex; 
+    justify-content: center; 
+    gap: 10px; 
+    margin-top: 20px;
+}
+
+.button-row {
+  display: flex;       /* aligne horizontalement */
+  gap: 10px;           /* espace entre les boutons */
+  justify-content: center; /* centre les boutons si tu veux */
+  align-items: center;     /* aligne verticalement */
+}
